@@ -66,6 +66,9 @@ max_date_hour = hours_df["dteday"].max()
 with st.sidebar:
     # Menambahkan logo perusahaan
     st.image("https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/image1_hH9B4gs.jpg")
+
+    st.subheader('By : Irwandika M.F ')
+    st.subheader('Submission for Dicoding')
     
         # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
@@ -73,6 +76,9 @@ with st.sidebar:
         min_value=min_date_days,
         max_value=max_date_days,
         value=[min_date_days, max_date_days])
+    
+    st.markdown('<p style="font-size:15px;">Data disamping merupakan rangkuman data dari penyewaan sepeda yang dilakukan dari 2011 hingga 2012</p>', unsafe_allow_html=True)
+
   
 main_df_days = days_df[(days_df["dteday"] >= str(start_date)) & 
                        (days_df["dteday"] <= str(end_date))]
@@ -89,8 +95,7 @@ one_of_week_df = macem_season(main_df_hour)
 
 #Melengkapi Dashboard dengan Berbagai Visualisasi Data
 st.header('Bike Sharing :sparkles:')
-st.subheader('by : Irwandika M.F')
-st.subheader('Submission for Dicoding')
+
 
 
 st.subheader('Daily Sharing')
@@ -122,6 +127,31 @@ ax.tick_params(axis='y', labelsize=20)
 ax.tick_params(axis='x', labelsize=15)
 st.pyplot(fig)
 
+st.markdown('<p style="font-size:20px;">Berdasarkan data yang kita lihat, performa penjualan tertinggi berada pada season Fall dengan winter di urutan kedua</p>', unsafe_allow_html=True)
+
+st.subheader("Hari apa penyewaan sepeda terbanyak??")
+
+colors = ["#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3",  "#90CAF9",  "#90CAF9",  "#D3D3D3"]
+fig, ax = plt.subplots(figsize=(20, 10))
+sns.barplot(
+        y="count_cr", 
+        x="one_of_week",
+        data=one_of_week_df.sort_values(by="one_of_week", ascending=False),
+        palette=colors,
+        ax=ax
+    )
+ax.set_title("Grafik Antar Hari", loc="center", fontsize=50)
+ax.set_ylabel(None)
+ax.set_xlabel(None)
+ax.tick_params(axis='x', labelsize=25)
+ax.tick_params(axis='y', labelsize=30)
+st.pyplot(fig)
+
+st.markdown('<p style="font-size:20px;">Hasil yang di dapat pada grafik di atas terlihat hari jumat merupakan hari dimana terjadi paling banyak penyewaan sepeda. dan paling sedikit di hari minggu.</p>', unsafe_allow_html=True)
+
+
+
+
 st.subheader("Pada cuaca apa penyewa sepeda paling banyak dan paling sedikit?")
 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(35, 15))
 
@@ -145,23 +175,14 @@ ax[1].tick_params(axis='x', labelsize=25)
 
  
 st.pyplot(fig)
-st.subheader("Hari apa penyewaan sepeda terbanyak??")
 
-colors = ["#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3",  "#90CAF9",  "#90CAF9",  "#D3D3D3"]
-fig, ax = plt.subplots(figsize=(20, 10))
-sns.barplot(
-        y="count_cr", 
-        x="one_of_week",
-        data=one_of_week_df.sort_values(by="one_of_week", ascending=False),
-        palette=colors,
-        ax=ax
-    )
-ax.set_title("Grafik Antar Hari", loc="center", fontsize=50)
-ax.set_ylabel(None)
-ax.set_xlabel(None)
-ax.tick_params(axis='x', labelsize=25)
-ax.tick_params(axis='y', labelsize=30)
-st.pyplot(fig)
+
+st.markdown('<p style="font-size:20px;">Penyewaan sepeda paling banyak terjadi pada cuaca clear dan sebaliknya pada cuaca heavy rainsnow tidak ada yang melakukan penyewaan sepeda</p>', unsafe_allow_html=True)
+
+
+
+
+
 
 st.subheader("Perbandingan Customer yang Registered dengan casual")
 
@@ -175,3 +196,6 @@ ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',colors=["#D3D3D
 ax1.axis('equal')  
 
 st.pyplot(fig1)
+
+
+st.markdown('<p style="font-size:20px;">Dari grafik yang dapat kita lihat, Registered = 81.2% dengan casual sebesar 18.8%</p>', unsafe_allow_html=True)
