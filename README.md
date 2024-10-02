@@ -1,4 +1,4 @@
-# Analisis_data_bike_sharing
+# Analytical Bike Sharing Dashboard ✨
 
 
 ## Preview
@@ -14,3 +14,31 @@ click link below
 ## Deskripsi
 
 Proyek ini bertujuan untuk melakukan pelatihan analisis terhadap datasheet bike-sharing menggunakan python. Tujuan lain dari pembuatan aplikasi ini adalah untuk submission pada course analisis data di course dicoding.
+
+
+
+
+
+# How to Run the App
+
+
+## Setup Environment - Anaconda
+```
+conda create --name main-ds python=3.9
+conda activate main-ds
+pip install -r requirements.txt
+```
+
+## Setup Environment - Shell/Terminal
+```
+mkdir proyek_analisis_data
+cd proyek_analisis_data
+pipenv install
+pipenv shell
+pip install -r requirements.txt
+```
+
+## Run steamlit app
+```
+streamlit run dashboard.py
+```
