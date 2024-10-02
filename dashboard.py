@@ -89,6 +89,9 @@ one_of_week_df = macem_season(main_df_hour)
 
 #Melengkapi Dashboard dengan Berbagai Visualisasi Data
 st.header('Bike Sharing :sparkles:')
+st.subheader('by : Irwandika M.F')
+st.subheader('Submission for Dicoding')
+
 
 st.subheader('Daily Sharing')
 col1, col2, col3 = st.columns(3)
